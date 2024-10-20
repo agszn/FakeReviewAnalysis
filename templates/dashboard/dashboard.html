@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .dashboard-container {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .card-panel {
+            margin: 10px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card-panel h4, .card-panel p {
+            margin: 0;
+        }
+        .card-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .chart-container {
+            margin-top: 40px;
+        }
+        .chart-container canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+        .footer-section {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+{% endblock %}
+{% load static %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h4>Dashboard</h4>
+        </div>
+        
+        <!-- small cards -->
+        <div class="card-section">
+            <div class="card-panel teal lighten-4">
+                <h4>Users</h4>
+                <p>{{ users_count }}</p>
+            </div>
+            <div class="card-panel teal lighten-4">
+                <h4>Hotels</h4>
+                <p>4</p>
+            </div>
+            <div class="card-panel teal lighten-4">
+                <h4>Recall value</h4>
+                <p>0.095</p>
+            </div>
+            <div class="card-panel teal lighten-4">
+                <h4>Accuracy</h4>
+                <p>96.4%</p>
+            </div>
+        </div>
+        
+        <!-- details -->
+        {% if prediction %}
+        <div class="card-panel light-blue lighten-5">
+            <h5>Fake Review Detection Details</h5>
+            <p>{{ prediction_details }}</p>
+        </div>
+        {% endif %}
+        
+        <!-- graph -->
+        <div class="chart-container">
+            <div class="card-panel white">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var labels = ["Fake Review", "Real Review"];
+    var dataValues = [3, 5];
+
+    var datasets = [{
+        label: 'Fake Review Detection Details',
+        data: dataValues,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+    }];
+
+    var barChartData = {
+        labels: labels,
+        datasets: datasets
+    };
+
+    var barChart = new Chart(document.getElementById('barChart').getContext('2d'), {
+        type: 'bar',
+        data: barChartData,
+    });
+</script>
+{% endblock %}

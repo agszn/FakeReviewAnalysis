@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block style %}
+<style>
+    /* Add your CSS styles here */
+    .about {
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-width: 800px;
+    }
+
+    .about h1 {
+        text-align: center;
+    }
+
+    .about p {
+        font-weight: bold;
+    }
+
+    .about-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .about-img img {
+        max-width: 200px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .about-text {
+        flex: 1;
+    }
+
+    .btn {
+        margin-left: 20%;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h1>About</h1>
+    <p>
+        If the fake is discovered, the damage can be massive. Your credibility and reputation will be damaged and, in the worst case, customers will no longer want to buy from you. In any case, more than half of consumers say that they would no longer buy a product if they had found a fake review.
+    </p>
+    <hr>
+    <div class="about-info">
+        <div class="about-img">
+            <img src="https://www.southernliving.com/thmb/CzuBalMhp_jRAeZ0ytI6NB6znJw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Hourglass-MirageC-Getty-Images-2000-36c7e2433db941eb9908a9fde84fdbd9.jpg" alt="GeeksforGeeks">
+        </div>
+        <div class="about-text">
+            <p>
+                Up to 40% of these online testimonials are unreliable, according to a public interest research group, and these fake reviews are estimated
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}<title>Fake Review Detection</title>{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        /* Add any custom styles here */
+    </style>
+
+    {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1 class="center-align">Review Analysis</h1>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div>
+                            <h2>Review Details</h2>
+                            <p><strong>Reviewer Name:</strong> {{ review.reviewer_name }}</p>
+                            <p><strong>Review Text:</strong> {{ review.review_text }}</p>
+                            <p><strong>Rating:</strong> {{ review.rating }}</p>
+                            <p><strong>Hotel Name:</strong> {{ review.hotel_name }}</p>
+                            <p><strong>Date Posted:</strong> {{ review.date_posted }}</p>
+                        </div>
+                        <div>
+                            <h2>Analysis</h2>
+                            {% if review.is_fake %}
+                                <p>This review is <strong>fake</strong>.</p>
+                            {% else %}
+                                <p>This review is <strong>genuine</strong>.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Materialize JavaScript CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% endblock %}

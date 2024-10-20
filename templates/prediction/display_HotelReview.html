@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+{% block title %}<title>Fake Review Detection</title>{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block style %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>List of Hotel Reviews</h1>
+    <table class="review-table">
+        <thead>
+            <tr>
+                <th>Hotel Name</th>
+                <th>Reviewer Name</th>
+                <th>Review Comments</th>
+                
+                <th>rating</th>
+                <th>is_fake</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in hotels %}
+            <tr>
+                <td>{{ review.hotel }}</td>
+                <td>{{ review.reviewer_name }}</td>
+
+                <td>{{ review.review_text }}</td>
+
+                <td>{{ review.rating }}</td>
+               
+                <td>{{ review.is_fake }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

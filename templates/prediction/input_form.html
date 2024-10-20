@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}<title>Fake Review Detection</title>{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="center-align">Hotel Review Form</h1>
+    <div class="row">
+        <form class="col s12" method="POST" action="{% url 'analyze_review_view' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="reviewer_name" name="reviewer_name" type="text" class="validate" required>
+                    <label for="reviewer_name">Your Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="review_text" name="review_text" class="materialize-textarea validate" required></textarea>
+                    <label for="review_text">Your Review</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="rating" name="rating" type="number" class="validate" min="1" max="10" required>
+                    <label for="rating">Rating (1-10)</label>
+                </div>
+            </div>
+            <!-- Dropdown for selecting hotel name -->
+            <div class="input-field col s12">
+                <select id="hotel_name" name="hotel_name">
+                    <option value="" disabled selected>Choose hotel</option>
+                    <option value="Hotel A">Hotel Samudra</option>
+                    <option value="Hotel B">Hotel New Uday Bhuvan</option>
+                    <option value="Hotel C">Hotel Pai</option>
+                    <option value="Hotel D">Hotel Western Tower</option>
+                </select>
+                <label>Hotel Name</label>
+            </div>
+            <!-- End of dropdown -->
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit Review</button>
+        </form>
+    </div>
+
+    <!-- Add Materialize JavaScript CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+{% endblock %}

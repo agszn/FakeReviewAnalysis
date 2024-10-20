@@ -1,0 +1,58 @@
+<!-- user_notifications.html -->
+{% extends "base.html" %}
+{% block title %}Notifications{% endblock %}
+{% block style %}
+    <style>
+        div{
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p.message {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        p.created-at {
+            color: #888;
+        }
+    </style>
+{% endblock %}
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Notifications</h1>
+
+        {% if notifications %}
+            <ul>
+                {% for notification in notifications %}
+                    <li>
+                        <p class="message">{{ notification.message }}</p>
+                        <p class="created-at">{{ notification.created_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No notifications.</p>
+        {% endif %}
+    </div>
+{% endblock %}

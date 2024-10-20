@@ -1,0 +1,43 @@
+<!-- In your templates/reviews/review_list.html file -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reviews</title>
+    <!-- Add Materialize CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">All Reviews</h1>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Reviewer Name</th>
+                    <th>Hotel Name</th>
+                    <th>Rating</th>
+                    <th>Review Text</th>
+                    <th>Date Posted</th>
+                    <th>Fake Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in reviews %}
+                <tr>
+                    <td>{{ review.reviewer_name }}</td>
+                    <td>{{ review.hotel_name }}</td>
+                    <td>{{ review.rating }}</td>
+                    <td>{{ review.review_text }}</td>
+                    <td>{{ review.date_posted }}</td>
+                    <td>{% if review.is_fake %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Add Materialize JavaScript CDN link at the end of the body -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
